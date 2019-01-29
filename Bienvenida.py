@@ -1,0 +1,11 @@
+from tkinter import *
+ventana=Tk()
+ventana.geometry("400x400")
+ventana.title("Uso de imagenes")
+imagenbtn = PhotoImage(file="img.png")
+imagen=imagenbtn.subsample(2,3)
+imagenfo=PhotoImage(file="")
+imagenfo=imagenfo.subsample(1,1)
+boton= Button(ventana,image=imagen).place(x=20,y=20)
+fondo=Label(ventana,image=imagenfo).place(x=0,y=0)
+ventana.mainloop()
