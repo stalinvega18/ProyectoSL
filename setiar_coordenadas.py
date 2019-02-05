@@ -28,6 +28,7 @@ canvas = Canvas(width=400, height=300)
 canvas.pack(expand=YES, fill=BOTH)
 photo=PhotoImage(file='img.png')
 canvas.create_image(0,70,image=photo,anchor=NW)
+#colocamos la imagen
 imagenbtn= PhotoImage(file="salir.png")
 i=imagenbtn.subsample(45,45)
 btn_terminar=Button(ventana,image=i,command=salir).place(x=745,y=43)
