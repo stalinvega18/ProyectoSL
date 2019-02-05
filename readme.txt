@@ -1,8 +1,27 @@
 INSTRUCCIONES:
 
 1) clonar el proyecto
-2) verificar que el archivo ubucaciones.txt este en la misma ubicacion que el restode archivos, y q su contenido inicial sea 
-    comienzo,0,0
+
+
+
+
+
+Consideraciones
+*)  Las medidas de las imagenes con las que trabajan el programa de forma ideal en pixeles son
+    1600*1167
+
+*) Antes de comenzar a trabajar en el programa se debe escojer una imagen, las cuales
+    preferiblemente deberian estar guardadas en la carpeta imagenes
+    
+*) Se debe trabajar en una maquina que cuente con python 3.*
+
+*) Las siguientes librerias deben estar instaadas en la maquina
+    - tkinter
+    - Pillow
+    
+*) Las imagenes usadas para los botones pueden ser sustituidas guardando unas nuevas con sus 
+    mismos nombres
+  
 
 
 
