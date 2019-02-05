@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 from tkinter import messagebox
 import tkinter as tk
 from tkinter import filedialog
-import guardar_coordenas
+import guardar_coordenadas
 from pathlib import Path
 import os.path as path
 from tkinter.colorchooser import *
@@ -17,7 +17,7 @@ extension=".txt"
 global dibujo
 ubicacion=""
 lista = []
-a = guardar_coordenas.archivo_cor()
+a = guardar_coordenadas.archivo_cor()
 ventana = Tk()
 imagenAnchuraMaxima=ventana.winfo_screenwidth()
 imagenAlturaMaxima=ventana.winfo_screenheight()
