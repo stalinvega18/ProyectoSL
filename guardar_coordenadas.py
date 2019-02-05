@@ -1,14 +1,14 @@
 class archivo_cor:
 
-    def guardar(self,articulo,x,y):
-        archivo=open('ubicaciones.txt','a')
+    def guardar(self,articulo,x,y,file):
+        archivo=open(file,'a')
         archivo.write(str(articulo)+','+str(x)+','+str(y)+'\n')
         archivo.close()
 
 
-    def extraer(self):
+    def extraer(self,file):
         dicio= {}
-        archivo = open('ubicaciones.txt','r')
+        archivo = open(file,'r')
         linea = archivo.readline()
 
         while linea != '':
@@ -25,7 +25,8 @@ class archivo_cor:
 
         return dicio
 
-    def existencia(self,diccionario,articulo):
+    def existencia(self,articulo,file):
+        diccionario=self.extraer(file)
         controlador=False
         for key in diccionario:
             if articulo == key:
@@ -34,11 +35,11 @@ class archivo_cor:
         return controlador
 
 
-    def sobreescribir(self,articulo1,x,y):
-        archivo = open('ubicaciones.txt',"r")
+    def sobreescribir(self,articulo1,x,y,file):
+        archivo = open(file,"r")
         lineas = archivo.readlines()
         archivo.close()
-        archivo = open("ubicaciones.txt","w")
+        archivo = open(file,"w")
         for linea in lineas:
             div = linea.split(",")
             articulo= div[0]
@@ -49,6 +50,6 @@ class archivo_cor:
                 #print(linea)
 
         archivo.close()
-        archivo = open('ubicaciones.txt', 'a')
+        archivo = open(file, 'a')
         archivo.write(str(articulo1) + ',' + str(x) + ',' + str(y) + '\n')
         archivo.close()
