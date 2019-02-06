@@ -1,5 +1,6 @@
 class archivo_cor:
 
+
     def guardar(self,articulo,x,y,file):
         archivo=open(file,'a')
         archivo.write(str(articulo)+','+str(x)+','+str(y)+'\n')
