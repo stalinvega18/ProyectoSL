@@ -13,7 +13,7 @@ Consideraciones
 *) Antes de comenzar a trabajar en el programa se debe escojer una imagen, las cuales
     preferiblemente deberian estar guardadas en la carpeta imagenes
     
-*) Se debe trabajar en una maquina que cuente con python 3.* y pycharm
+*) Se debe trabajar en una maquina que cuente con python3.*
 
 *) Las siguientes librerias deben estar instaladas en la maquina
     - tkinter
