@@ -7,6 +7,7 @@ from tkinter import filedialog
 import guardar_coordenadas
 from pathlib import Path
 import os.path as path
+from tkinter.colorchooser import *
 
 
 
@@ -22,6 +23,7 @@ imagenAnchuraMaxima=ventana.winfo_screenwidth()
 imagenAlturaMaxima=ventana.winfo_screenheight()
 articulo=StringVar()
 btn_terminar=Button
+color = "#FF0000"
 
 #=============================================
 
@@ -42,28 +44,26 @@ def limpiar(dibujo):
         canvas.delete(lista[len(lista)-2])
 
 
-def limpiar_agregar(dibujo):
-    canvas.delete(dibujo)
-
-
 def mostrar_articulo():
+    global color
     art = articulo.get()
     if not art:
         messagebox.showinfo("ATENCION", 'Debe ingresar un articulo')
     else:
-        dicionario = a.extraer(ubicacion)
-        if not a.existencia(art,ubicacion):
-            messagebox.showinfo("ATENCION", 'el articulo no esta disponible')
+        if path.exists(ubicacion):
+            dicionario = a.extraer(ubicacion)
+            if not a.existencia(art,ubicacion):
+                messagebox.showinfo("ATENCION", 'el articulo no esta disponible')
+            else:
+                coordX = int(dicionario[art][0])
+                coordY = int(dicionario[art][1])
+                color = color
+                x1, y1 = (coordX - 10), (coordY - 10)
+                x2, y2 = (coordX + 10), (coordY + 10)
+                dibujo=canvas.create_oval(x1, y1, x2, y2, fill=color)
+                limpiar(dibujo)
         else:
-            coordX = int(dicionario[art][0])
-            coordY = int(dicionario[art][1])
-            color = "#FF0000"
-            x1, y1 = (coordX - 10), (coordY - 10)
-            x2, y2 = (coordX + 10), (coordY + 10)
-            dibujo=canvas.create_oval(x1, y1, x2, y2, fill=color)
-            limpiar(dibujo)
-
-
+            messagebox.showinfo("ATENCION", "No existe ningun articulo en este lugar")
 
     articulo.set("")
 
@@ -82,9 +82,7 @@ def selecionar_foto():
     canvas.create_image(0, 62, anchor=NW, image=imagenL)
 
 
-
 def agregar():
-
     global i
     global btn_terminar
     imagenbtn = PhotoImage(file="salir.png")
@@ -101,22 +99,39 @@ def buscar():
     btn_terminar.place_forget()
 
 
+
+def colores():
+    global color
+    co=askcolor()
+    c=str(co).split(',')
+    color = c[-1].replace(")","").replace("'","").strip()
+
+
+
+
 #=====================cCOMIENZO GUI=====================
 
 #BARRA DE MENU
 menu1 = tk.Menu(ventana)
 opciones1 = tk.Menu(menu1)
+opciones2 = tk.Menu(menu1)
 opciones1.add_command(label="Foto",command=selecionar_foto)
 opciones1.add_command(label="Agregar",command=agregar)
 opciones1.add_command(label="Buscar",command=buscar)
 opciones1.add_command(label="Salir",command=salir)
 
+opciones2.add_command(label="Color",command=colores)
 menu1.add_cascade(label="Archivo", menu=opciones1)
+menu1.add_cascade(label="Editar", menu=opciones2)
+
 menu1.add_cascade(label="Ayuda")
 ventana.config(menu=menu1)
 
+
+
 #FRAME
 ventana.geometry("{0}x{1}".format(ventana.winfo_screenwidth(), ventana.winfo_screenheight()))
+ventana.title("Dont Be Lost")
 lb_articulo=Label(ventana,text='BUSCAR: ')
 lb_articulo.pack( side = TOP )
 bx_articulo=Entry(ventana,textvariable=articulo)
@@ -126,7 +141,7 @@ frame.grid_rowconfigure(0, weight=1)
 frame.grid_columnconfigure(0, weight=1)
 canvas = Canvas(width=400, height=300)
 canvas.pack(expand=YES, fill=BOTH)
-messagebox.showinfo("COMENZAR","seleccione el lugar de trabajo en la pestaña Archivo")
+messagebox.showinfo("BIENVENIDO","seleccione el lugar de trabajo en la pestaña Archivo")
 
 #COMIENZO EN BUSQUEDA
 imagenbtn1= PhotoImage(file="lupa.png")
