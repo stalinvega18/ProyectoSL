@@ -24,7 +24,7 @@ Consideraciones
     
 
   Recursos web
-  https://sites.google.com/view/dont-be-lost/p%C3%A1gina-principal
+https://sites.google.com/view/dont-be-lost/p%C3%A1gina-principal
   
 
 
