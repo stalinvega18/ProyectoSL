@@ -21,6 +21,10 @@ Consideraciones
     
 *) Las imagenes usadas para los botones pueden ser sustituidas guardando unas nuevas con sus 
     mismos nombres
+    
+
+  Recursos web
+  https://sites.google.com/view/dont-be-lost/p%C3%A1gina-principal
   
 
 
